@@ -1,0 +1,111 @@
+
+body {
+    display: flex;
+    justify-content: flex-start;  /* بدل space-around */
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg ,#153677 ,rgba(255, 0, 0, 0.834));
+
+}
+
+
+.meue-services {
+    position: relative;
+    top: 50%;
+    width: 10%;
+    height: 710px;
+    margin-left: 14%;
+    flex: 0 0 15%;        /* تمسك 20% من العرض */
+    background-color: #fff;
+    align-self: center;    
+    border-radius: 30px;
+}
+
+.menu-head {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.meue-services ul {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-self: center;
+    
+}
+.meue-services .li-menue {
+    padding: 0;
+    justify-self: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.li-menue img {
+    position: absolute;
+    width: 40px;
+    margin-left: -70px;
+}
+
+.li-menue #btn-end-Task-Time {
+    padding-left:20px ;
+    padding-right:20px ;
+
+}
+.li-menue #btn-To-Do-List,
+#btn-Note-Book,
+#btn-end-Task-Time {
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size:20px;
+    border: none;
+    background: linear-gradient(
+        135deg,
+        var(--clr-gradient-start) 0%,
+        var(--clr-gradient-end)   100%
+      );
+    color: #fff;
+    cursor: pointer;
+
+    transition: 
+    transform        0.3s ease,
+    box-shadow       0.3s ease;
+}
+
+.li-menue #btn-To-Do-List:hover,
+#btn-Note-Book:hover,
+#btn-end-Task-Time:hover {
+    transform: scale(1.1);
+}
+
+
+.main-content {
+    position: relative;
+    width: 60%;
+    height: 500px;
+    top: 119px;
+    align-content: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid #fff; 
+    overflow:auto;
+}
+
+.main-content::-webkit-scrollbar {
+    background-color: #153677;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#content-loader {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    height: 100%px;
+}
+

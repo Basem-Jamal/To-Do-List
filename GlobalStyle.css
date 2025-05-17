@@ -6,11 +6,39 @@
     text-decoration: none;
     list-style: none;
 }
+  
+:root {
 
-.container {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(135deg ,#153677 ,rgba(255, 0, 0, 0.834));
+    --clr-gradient-start: #8F00FF; /* بنفسجي فاتح */
+    --clr-gradient-end:   #FF0080; /* زهري فاقع */
+
+    /* ألوان رئيسية */
+    --clr-primary:       #ff5945;
+    --clr-secondary:     #153677;
+    --clr-secondary-2:   rgba(255,0,0,0.834);
+  
+    /* خلفيات */
+    --clr-bg-light:      #ffffff;
+    --clr-bg-grey:       #e5e2e2;
+  
+    /* نصوص */
+    --clr-text-main:     #333333;
+    --clr-text-muted:    #555555;
+  
+    /* hover */
+    --clr-hover:         #dddddd;
+  }
+  
+
+
+
+
+
+  /* File Task css */
+
+  .container {
+    position: relative;
+    top:10px;
     padding: 10px;
 }
 
@@ -46,7 +74,7 @@
     border: none;
     padding: 10px;
 }
-button {
+#btn-addTask {
     border-radius: 30px;
     padding: 16px 50px;
     border: none;
@@ -65,7 +93,7 @@ ul li {
 }
 
 
-ul li span {
+#list-container li span {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -81,12 +109,12 @@ ul li span {
     cursor: pointer;
 }
 
-ul li span:hover {
+#list-container li span:hover {
 
     background: #dddddd;
 }
 
-ul li::before {
+#list-container li::before {
     content: '';
     position: absolute;
     height: 28px;
@@ -100,14 +128,25 @@ ul li::before {
     transform: translateY(-50%);
 
 }
-ul li.checked {
+#list-container li.checked {
     color: #555;
     text-decoration: line-through;
 }
 
-ul li.checked::before {
+#list-container li.checked::before {
     background-image: url(/images/checked.png);
     background-position: center;
     background-size: cover;
 
 }
+#list-container li .edit-task {
+    position: absolute;
+    top: 50%;
+    right: 40px;           /* مسافة عن يمين القائمة */
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    background: url(/images/edit.png) center/cover no-repeat;
+    cursor: pointer;
+  }
+  /* زرّ التعديل */

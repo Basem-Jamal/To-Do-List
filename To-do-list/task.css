@@ -1,0 +1,126 @@
+.container {
+    position: relative;
+    top:10px;
+    padding: 10px;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: 0px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 30px;
+
+    transition: ease-in-out 0.2s;
+}
+
+
+
+
+.todo-app h2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(229, 226, 226);
+    padding-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+}
+
+#input-box {
+    flex: 1;
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 10px;
+}
+#btn-addTask {
+    border-radius: 30px;
+    padding: 16px 50px;
+    border: none;
+    outline: none;
+    background: #ff5945;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+ul li {
+    position: relative;
+    padding: 12px 8px 12px 50px;
+    font-size: 17px;
+    user-select: none;
+}
+
+
+#list-container li span {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 5px;
+    right: 0;
+    font-size: 22px;
+    line-height: 20px;
+    text-align: center;
+    align-content: center;
+    color: #555;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+#list-container li span:hover {
+
+    background: #dddddd;
+}
+
+#list-container li::before {
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(/images/unchecked.png);
+    background-position: center;
+    background-size: cover;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+
+}
+#list-container li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+#list-container li.checked::before {
+    background-image: url(/images/checked.png);
+    background-position: center;
+    background-size: cover;
+
+}
+#list-container li .edit-task {
+    position: absolute;
+    top: 50%;
+    right: 40px;           /* مسافة عن يمين القائمة */
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    background: url(/images/edit.png) center/cover no-repeat;
+    cursor: pointer;
+  }
+  /* زرّ التعديل */
+
+
+
+ #add-New-Text {
+    position: relative;
+    align-content: center;
+    bottom: 30px;
+ } 
