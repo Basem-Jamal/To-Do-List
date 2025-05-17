@@ -27,13 +27,13 @@
       inputNewText.title = "النص الجديد";
       inputNewText.style.display ="none";
 
-
-      const editBtn = document.createElement("span");
+      //33f
+      const editBtn = document.createElement("span");f
 
       editBtn.classList.add("edit-task");
       editBtn.title = "تعديل المهمة";
       editBtn.addEventListener ('click' ({
-          
+
       }))
       inputNewText.value = li.firstChild.value;
       inputNewText.style.display="block";
