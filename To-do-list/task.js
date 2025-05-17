@@ -29,9 +29,15 @@
 
 
       const editBtn = document.createElement("span");
+
       editBtn.classList.add("edit-task");
       editBtn.title = "تعديل المهمة";
-
+      editBtn.addEventListener ('click' ({
+          
+      }))
+      inputNewText.value = li.firstChild.value;
+      inputNewText.style.display="block";
+    
       const delBtn = document.createElement("span");
       delBtn.classList.add("delete-btn");
       delBtn.innerHTML = "&times;";
