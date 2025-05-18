@@ -1,6 +1,9 @@
 (() => {
     const listContainer = document.getElementById("list-container");
     const inputBox      = document.getElementById("input-box");
+    const btnAdd        = document.getElementById("btn-addTask");
+
+    btnAdd.addEventListener("click", addTask);
 
     // إضافة المهمة عند الضغط Enter أو زرّ Add
     inputBox.addEventListener("keydown", e => {
@@ -9,8 +12,10 @@
         addTask();
       }
     });
-    document.getElementById("btn-addTask")
-            .addEventListener("click", addTask);
+
+    // تحميل المهام المحفوظة
+    showList();
+
     
     function addTask() {
       const text = inputBox.value.trim();
@@ -20,34 +25,77 @@
       }
   
       const li = document.createElement("li");
-      li.textContent = text;
-  
+
+      const textTask = document.createElement("p");
+      textTask.className = "task-text";
+      textTask.textContent = text;
+      li.appendChild(textTask);
+    
+
+      // textTask.addEventListener('blur', finishEdit); 
+
       const inputNewText = document.createElement("input")
       inputNewText.classList.add("add-New-Text");
       inputNewText.title = "النص الجديد";
       inputNewText.style.display ="none";
 
-      //33f
-      const editBtn = document.createElement("span");f
-
+      const editBtn = document.createElement("span");
       editBtn.classList.add("edit-task");
       editBtn.title = "تعديل المهمة";
-      editBtn.addEventListener ('click' ({
 
-      }))
-      inputNewText.value = li.firstChild.value;
-      inputNewText.style.display="block";
+
+      inputNewText.addEventListener('keydown', e => {
+        if(e.key === "Enter") finishEdit();
+      })
+
+      inputNewText.addEventListener("blur" ,finishEdit);
     
       const delBtn = document.createElement("span");
       delBtn.classList.add("delete-btn");
       delBtn.innerHTML = "&times;";
       delBtn.title = "حذف المهمة";
       
+
+      listContainer.addEventListener('click', function(e){
+        const el = e.target;
+
+        if (el.matches(".edit-task")) {
+
+          inputNewText.value = textTask.textContent;
+
+          textTask.style.display ="none";
+  
+          inputNewText.style.display ="inline-block";
+          
+          inputNewText.focus();
+  
+        }
+        if (el.matches(".delete-btn")) {
+          el.parentElement.remove("task-text");
+          saveData();
+  
+        }
+      })
   
       li.append(inputNewText,editBtn, delBtn);
       listContainer.appendChild(li);
       saveData();
       inputBox.value = "";
+
+
+
+
+      function finishEdit () {
+
+        const newText = inputNewText.value.trim();
+
+        if (newText) {
+          textTask.textContent = newText;
+          saveData();
+        }
+        inputNewText.style.display ="none";
+        textTask.style.display     ="inline";
+      }
     }
     
     listContainer.addEventListener("click", e => {
@@ -56,14 +104,13 @@
         saveData();
       }
       else if (e.target.classList.contains("delete-btn")) {
-        e.target.parentElement.remove("edit-task");
-        saveData();
-      }
-      else if (e.target.classList.contains("edit-task")) {
-        let newText 
-        
       }
 
+      else if (e.target.tagName === "INPUT") {
+        e.target.classList.toggle("add-New-Text");
+        saveData();
+
+      }
     });
 
 function saveData() {
@@ -74,6 +121,5 @@ function showList() {
   const data = localStorage.getItem("Data");
   if (data) listContainer.innerHTML = data;
 }
-showList();
 
 })();
