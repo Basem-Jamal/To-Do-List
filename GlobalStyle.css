@@ -31,6 +31,30 @@
   
 
 
+/* شاشات أصغر من 768px (تابلت وموبايل) */
+@media (max-width: 768px) {
+  .todo-app {
+    margin: 2rem 1rem;      /* أقل مسافات جانبية */
+    padding: 2rem 1rem;
+  }
+  .row {
+    flex-direction: column; /* عمودي بدل أفقي */
+  }
+  #btn-addTask {
+    width: 100%;            /* زر بعرض الحاوية */
+    padding: 1rem;
+  }
+}
+
+/* شاشات أكبر من 1200px (ديسكتوب كبير) */
+@media (min-width: 998px) {
+  .container {
+    width: 80%;
+  }
+  .meue-services {
+    width: 80%;
+  }
+}
 
 
 
@@ -150,3 +174,14 @@ ul li {
     cursor: pointer;
   }
   /* زرّ التعديل */
+
+
+
+/* Edit of Notepad Page */
+
+.container-notepad {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 400px;
+}
