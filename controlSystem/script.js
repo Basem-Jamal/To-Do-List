@@ -11,9 +11,17 @@ function loadContent (page) {
         const container = document.getElementById("content-loader");
         container.innerHTML = html;
 
-        const oldScript = document.getElementById("toDoList-script");
-        if (oldScript) oldScript.remove();
+        //Down > Task Script
+        const oldScriptTask = document.getElementById("toDoList-script");
+        if (oldScriptTask) oldScriptTask.remove();
   
+
+        const oldScriptNote = document.getElementById("notes-script");
+        if (oldScriptNote) oldScriptNote.remove();
+
+        const oldScriptTime = document.getElementById("time-script");
+        if (oldScriptTime) oldScriptTime.remove();
+
 
         if(page.endsWith("task.html")) {
             const s = document.createElement("script");
@@ -22,6 +30,21 @@ function loadContent (page) {
             document.body.appendChild(s);
 
         }
+
+        else if (page.endsWith("note.html")) {
+            const s = document.createElement("script");
+            s.id = "notes-script";
+            s.src = "../Notepad/note.js"
+            document.body.appendChild(s);
+        } 
+
+        else if (page.endsWith("time.html")) {
+            const s = document.createElement("script");
+            s.id = "time-script";
+            s.src = "../endTaskTime/time.js"
+            document.body.appendChild(s);
+        } 
+
     })
     .catch(err => {
         console.error("❌ loadContent error:", err);

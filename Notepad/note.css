@@ -1,36 +1,64 @@
 /* Edit of Notepad Page */
 .container-notepad {
     position: relative;
-    background-color: rgb(255, 255, 255);
     width: 100%;
-    height: 400px;
-    display: flex
-;
+    height: 100%;
+    display: flex;
     /* justify-self: center; */
     justify-content: space-around;
     align-content: center;
     flex-wrap: wrap    
 }
 
-#addNote{
-  position: absolute;
-  width: 20%;
-  height: 10%;
-  margin-bottom: 20px;
-  background-color: #fff;
+.add {
+  width: 100%;
 }
 
-ul#listOfNotes-container {
-  position: absolute;
-  top: 100px;
-  left: 60px;
-}
-#listOfNotes-container li {
-  position: relative;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 20px;
-  background-color: cadetblue;
+#addNotes {
+  padding: 15px 20px;
   border-radius: 10px;
-  justify-content: left;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: ease 0.3s;
+
 }
+
+#addNotes:hover {
+  color: #fff;
+  background: linear-gradient(135deg ,#153677 ,rgba(255, 0, 0, 0.834));
+  transition: ease 0.3s;
+}
+
+
+
+
+.notes{
+  position: relative;
+  width: 100%;
+  padding:10px;
+  margin: 20px;
+  background-color: #fff;
+  min-height: 300px;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.432);
+  outline: none;
+
+}
+
+
+ul#listOfNotes-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin: 70px auto;
+  padding: 20px;
+}
+
