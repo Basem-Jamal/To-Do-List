@@ -34,6 +34,8 @@
 /* شاشات أصغر من 768px (تابلت وموبايل) */
 @media (max-width: 768px) {
   .todo-app {
+    position: relative;
+    top: 22px;
     margin: 2rem 1rem;      /* أقل مسافات جانبية */
     padding: 2rem 1rem;
   }
@@ -44,6 +46,29 @@
     width: 100%;            /* زر بعرض الحاوية */
     padding: 1rem;
   }
+
+  /* Notes */
+  #addNotes {
+  position: relative;
+  top: 69px;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: ease 0.3s;
+
+  }
+
+  #addNotes:hover {
+  color: #fff;
+  background: linear-gradient(135deg ,#153677 ,rgba(255, 0, 0, 0.834));
+  transition: ease 0.3s;
+  }
+
+
 }
 
 /* شاشات أكبر من 1200px (ديسكتوب كبير) */
