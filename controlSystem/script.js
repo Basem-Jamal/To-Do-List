@@ -71,4 +71,4 @@ endTaskTimeBtn.addEventListener("click" , e => {
     e.preventDefault();
     loadContent("../endTaskTime/time.html")
 })
-loadContent("../Notepad/note.html")
+loadContent("../Notepad/note.html");

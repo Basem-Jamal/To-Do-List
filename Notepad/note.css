@@ -45,11 +45,31 @@
   text-align: left;
   box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.432);
   outline: none;
+  transition: transform ease 0.3s;
+
+}
+
+.notes.active {
+  background-color: #000000;
+  color: #fff;
+  position: relative;
+  width: 100%;
+  padding:10px;
+  margin: 20px;
+  min-height: 300px;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0px 20px 10px rgb(255, 255, 255);
+  outline: none;
+  transform: scale(1.1);
+
+  transition: transform ease 0.3s;
 
 }
 
 
-ul#listOfNotes-container {
+
+div#listOfNotes-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -62,3 +82,32 @@ ul#listOfNotes-container {
   padding: 20px;
 }
 
+.Icon-DeleteTask {
+  position: relative;
+  display: flex; 
+  justify-self: right;
+  width: 15%;
+  height: 15%;
+  left:30px;
+  bottom: 70px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s ease;
+}
+
+img.Icon-DeleteTask:hover {
+  position: relative;
+  display: flex; 
+  justify-self: right;
+  width: 15%;
+  height: 15%;
+  padding: 10px;
+  cursor: pointer;
+  transform: scale(1.2);
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  background-color: #d43333;
+  border-radius: 30px;
+  color: #ffffff;
+}
