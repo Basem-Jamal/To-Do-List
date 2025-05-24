@@ -4,11 +4,29 @@
 
     
     
+      // تفويض حفظ التعديلات عند الكتابة في أي note
+  listContainerNotes.addEventListener("input", e => {
+    if (e.target.matches(".notes")) {
+      saveNotes();
+    }
+  });
+  listContainerNotes.addEventListener("blur", e => {
+    if (e.target.matches(".notes")) {
+      saveNotes();
+    }
+  }, true);
+
     addNotes.addEventListener("click" , (e) => {
         
-        const existingAlert = listContainerNotes.querySelector(".no-notes-alert");
-        if (existingAlert) existingAlert.remove();
-
+        const containerErrorNoNotes1 = document.querySelector(".error-no-notes");
+        containerErrorNoNotes1.style.display = "none";
+        const errorMessage1  = document.getElementById("error-message-top");
+        const messageError1  = document.getElementById("message-Error");
+        if (containerErrorNoNotes1 || errorMessage1 || messageError1){
+          containerErrorNoNotes1.remove();
+          errorMessage1.remove();
+          messageError1.remove();
+        }
 
 
         const wrapper = document.createElement("div");
@@ -60,7 +78,7 @@
       
           // 2) أضف active للعنصر المنقر
              clickedEl.classList.add("active");
-      
+    
             
         }
 
@@ -71,15 +89,31 @@
             if (listContainerNotes.childElementCount === 0) {
 
                 listContainerNotes.innerHTML = ""; 
+                
+                const containerErrorNoNotes = document.querySelector(".error-no-notes");
+                containerErrorNoNotes.style.display = "block";
 
-                const attention = document.createElement ("p");
-                attention.className = "no-notes-alert";
-                attention .style.color = "red";
-                attention.style.fontSize = "23px";
-                attention.textContent = "!حجي ما يصير هيك";
-                attention.style.position = "absolute";
+                const errorMessage = document.getElementById("error-message");
+                const messageError = document.getElementById("message-Error");
 
-                listContainerNotes.appendChild(attention);
+                if (containerErrorNoNotes) {
+                  errorMessage.textContent = "Error! No message found.";
+                  
+                }
+
+                
+
+                // const attention = document.createElement ("p");
+                // attention.className = "no-notes-alert";
+                // attention .style.color = "red";
+                // attention.style.fontSize = "23px";
+                // attention.textContent = "!حجي ما يصير هيك";
+                // attention.style.position = "relative";
+                // attention.style.top = "200px";
+                // attention.style.height = "200px";
+                // attention.style.overflow = "none";
+                
+                listContainerNotes.appendChild(containerErrorNoNotes);
                 saveNotes();
             }
         }
