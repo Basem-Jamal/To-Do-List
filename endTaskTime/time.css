@@ -1,0 +1,15 @@
+
+
+.container-time {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    min-height: 80vh;
+    margin-left: 310px;
+    top: 20px;
+    right: 35px;
+    margin-bottom: 30px;
+    background-color: aliceblue;
+    border-radius: 30px;
+}
+
