@@ -27,7 +27,7 @@ body {
   width: 30%;
   left: 1%;
   max-width: 250px;
-  height: 710px;
+  height: 96%;
   margin-right: 30px;
   flex: 0 0 15%;        /* تمسك 20% من العرض */
   background-color: #fff;
