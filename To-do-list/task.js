@@ -11,26 +11,20 @@ class clsTask {
     // listContainer.addEventListener("click", handleListClick)
   attachEvents() {
 
-    this.btnAdd.addEventListener("click", addTask);
+    this.btnAdd.addEventListener("click", this.addTask());
 
     
     // إضافة المهمة عند الضغط Enter أو زرّ Add
-    inputBox.addEventListener("keydown", e => {
+    this.inputBox.addEventListener("keydown", e => {
       if (e.key === "Enter") {
         e.preventDefault();
-        addTask();
+        this.addTask();
       }
     });
 
-  }
-
-
-
-    // inputNewText.addEventListener("blur" ,finishEdit);
-    // تفويض الأحداث (click, keydown, blur) على listContainer
     this.listContainer.addEventListener("click", e => this.handleClick(e));
     this.listContainer.addEventListener("keydown", e =>
-      (e.target.matches("input.add-New-Text") && e.key === "Enter") && this.finishEdit(e.target)
+      e.target.matches("input.add-New-Text") && e.key === "Enter" && this.finishEdit(e.target)
     );
     this.listContainer.addEventListener("focusout", e =>
       e.target.matches("input.add-New-Text") && this.finishEdit(e.target),
@@ -73,23 +67,10 @@ class clsTask {
         li.classList.toggle("checked"); 
         saveData();
       }
-    });
+  }
 
-    listContainer.addEventListener("keydown", e => {
-      if (e.target.matches("input.add-New-Text") && e.key === "Enter") {
-        finishEdit(e.target);
-      }
-      // لماذا وضعت هنا true ?
-    });
-
-
-    listContainer.addEventListener("focusout", e => {
-      if (e.target.matches("input.add-New-Text")) {
-        finishEdit(e.target);
-      }
-    }, true);
   
-    function finishEdit (inputEl) {
+    finishEdit (inputEl) {
 
       const li    = inputEl.closest("li"); // لماذا ؟
       const textP = li.querySelector(".task-text");
@@ -103,19 +84,9 @@ class clsTask {
       textP.style.display   ="inline";
     }
 
-  // 3)— addTask unchanged وظيفياً
-  btnAdd.addEventListener("click", addTask);
-  inputBox.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      addTask();
-    }
-  });
 
-
-
-    function addTask() {
-      const text = inputBox.value.trim();
+    addTask() {
+      const text = this.inputBox.value.trim();
       if (!text) {
         // alert("عمي شلونك ؟.. لابد تكتب مهمة على الأقل");
         return;
@@ -149,21 +120,24 @@ class clsTask {
       
   
       li.append(textP,input,editBtn, delBtn);
-      listContainer.append(li);
-      saveData();
-      inputBox.value = "";
+      this.listContainer.append(li);
+      this.saveData();
+      this.inputBox.value = "";
     
     }
     
 
- saveData() {
-  localStorage.setItem("Data", listContainer.innerHTML);
+  saveData() {
+  localStorage.setItem("Data", this.listContainer.innerHTML);
+  }
+
+  showList() {
+    const data = localStorage.getItem("Data");
+    if (data) this.listContainer.innerHTML = data;
+  }
 }
 
- showList() {
-  const data = localStorage.getItem("Data");
-  if (data) listContainer.innerHTML = data;
-}
-showList();
-}
-
+  
+app = new clsTask;
+app.showList();
+app.attachEvents();
