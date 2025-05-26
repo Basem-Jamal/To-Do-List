@@ -1,13 +1,17 @@
-(() => {
-    const listContainer = document.getElementById("list-container");
-    const inputBox      = document.getElementById("input-box");
-    const btnAdd        = document.getElementById("btn-addTask");
+class clsTask {
+  
+  constructor () {
+    this.listContainer = document.getElementById("list-container");
+    this.inputBox      = document.getElementById("input-box");
+    this.btnAdd        = document.getElementById("btn-addTask");
 
+
+  }
 
     // listContainer.addEventListener("click", handleListClick)
+  attachEvents() {
 
-
-    btnAdd.addEventListener("click", addTask);
+    this.btnAdd.addEventListener("click", addTask);
 
     
     // إضافة المهمة عند الضغط Enter أو زرّ Add
@@ -18,27 +22,45 @@
       }
     });
 
+  }
+
+
 
     // inputNewText.addEventListener("blur" ,finishEdit);
+    // تفويض الأحداث (click, keydown, blur) على listContainer
+    this.listContainer.addEventListener("click", e => this.handleClick(e));
+    this.listContainer.addEventListener("keydown", e =>
+      (e.target.matches("input.add-New-Text") && e.key === "Enter") && this.finishEdit(e.target)
+    );
+    this.listContainer.addEventListener("focusout", e =>
+      e.target.matches("input.add-New-Text") && this.finishEdit(e.target),
+      true
+    );
+  }
 
+  handleClick(e) {
+    const btn = e.target;
+    const li  = btn.closest("li");
+    if (!li) return;
 
-    listContainer.addEventListener('click', function(e){
-      const btn = e.target;
-      const li = btn.closest("li");
-      if (!li) return;
-
+    // تعديل
+    if (btn.matches(".edit-task")) {
       const textP = li.querySelector(".task-text");
       const input = li.querySelector("input.add-New-Text");
-      // ملاخظة لماذا كتبت btn وهناك li = btn ?;
-      if (btn.matches(".edit-task")) {
-        input.value         = textP.textContent;
-        textP.style.display = "none";
-        input.style.display = "inline-block";
-        input.focus();
+      input.value         = textP.textContent;
+      textP.style.display = "none";
+      input.style.display = "inline-block";
+      input.focus();
+      return;
+    }
 
-        return;
+    // حذف
+    if (btn.matches(".delete-btn")) {
+      li.remove();
+      this.saveData();
+      return;
+    }
 
-      }
 
       if (btn.matches(".delete-btn")) {
         li.remove();
@@ -95,7 +117,7 @@
     function addTask() {
       const text = inputBox.value.trim();
       if (!text) {
-        alert("عمي شلونك ؟.. لابد تكتب مهمة على الأقل");
+        // alert("عمي شلونك ؟.. لابد تكتب مهمة على الأقل");
         return;
       }
   
@@ -134,14 +156,14 @@
     }
     
 
-function saveData() {
+ saveData() {
   localStorage.setItem("Data", listContainer.innerHTML);
 }
 
-function showList() {
+ showList() {
   const data = localStorage.getItem("Data");
   if (data) listContainer.innerHTML = data;
 }
 showList();
+}
 
-})();
